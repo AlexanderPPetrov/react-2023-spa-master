@@ -1,28 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import constants from "../../constants"
 import { useMovieContext } from "../../context/MoviesContext"
 import axios from 'axios'
+import { useDiscoverMovie } from '../../network/movies';
 
 function MovieFilter() {
 
     const [checked, setChecked] = useState([])
     const [sortBy, setSortBy] = useState('popularity.desc')
-    const { setMovies } = useMovieContext()
+    const { setMovies, setDiscoverMovieLoading } = useMovieContext()
     const genres = [{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":16,"name":"Animation"},{"id":35,"name":"Comedy"},{"id":80,"name":"Crime"},{"id":99,"name":"Documentary"},{"id":18,"name":"Drama"},{"id":10751,"name":"Family"},{"id":14,"name":"Fantasy"},{"id":36,"name":"History"},{"id":27,"name":"Horror"},{"id":10402,"name":"Music"},{"id":9648,"name":"Mystery"},{"id":10749,"name":"Romance"},{"id":878,"name":"Science Fiction"},{"id":10770,"name":"TV Movie"},{"id":53,"name":"Thriller"},{"id":10752,"name":"War"},{"id":37,"name":"Western"}]
 
+    const { status, data, error, isFetching, refetch, isLoading } = useDiscoverMovie({
+        sort_by: sortBy,
+        with_genres: checked.join(',')
+    });
+
+    console.log(isFetching, isLoading)
+    useEffect(() => {
+        if (data) {
+            setMovies(data?.results)
+        }
+    }, [data])
+    useEffect(() => {
+        setDiscoverMovieLoading(isLoading)
+    }, [isLoading])
+
+
     function findMovies() {
-        axios.get(`${constants.baseUrl}/discover/movie`, { params: { 
-            api_key: constants.apiKey,
-            language: 'en-US',
-            sort_by: sortBy,
-            include_adult: false,
-            with_genres: checked.join(','),
-            page: 1,
-        }})
-        .then(res => {
-            setMovies(res?.data?.results ?? [])
-        })
-       
+       refetch()
     }
 
     function onCheckboxChange(id) {

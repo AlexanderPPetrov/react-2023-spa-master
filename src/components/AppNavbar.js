@@ -10,6 +10,7 @@ function AppNavbar() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/users">Users</Nav.Link>
+            <Nav.Link as={Link} to="/weather">Weather</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

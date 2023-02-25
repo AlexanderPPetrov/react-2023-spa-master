@@ -1,10 +1,7 @@
 import MovieFilter from "../components/movies/MovieFilter"
-import MovieList from "../components/movies/MovieList"
+import MovieListContainer from "../components/movies/MovieListContainer"
 
-import { useMovieContext } from '../context/MoviesContext'
 function HomePage() {
-
-    const { movies } = useMovieContext()
 
     return <div className="container">
     <div className="row">
@@ -12,8 +9,7 @@ function HomePage() {
             <MovieFilter/>
         </div>
         <div className="col-md-8">
-            <div>bbb</div>
-            <MovieList movies={movies}/>
+            <MovieListContainer/>
         </div>
     </div>
 </div>
