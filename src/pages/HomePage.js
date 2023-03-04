@@ -1,6 +1,6 @@
 import MovieFilter from "../components/movies/MovieFilter"
 import MovieListContainer from "../components/movies/MovieListContainer"
-
+import FavoriteMoviesToast from "../components/movies/FavoriteMoviesToast"
 function HomePage() {
 
     return <div className="container">
@@ -10,6 +10,7 @@ function HomePage() {
         </div>
         <div className="col-md-8">
             <MovieListContainer/>
+            <FavoriteMoviesToast/>
         </div>
     </div>
 </div>

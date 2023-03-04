@@ -16,7 +16,7 @@ function Providers({children}) {
                             {children}
                         </MoviesContextProvider>
                     </UserContextProvider>
-                    <ReactQueryDevtools initialIsOpen={true} />
+                    <ReactQueryDevtools initialIsOpen={false} />
                 </QueryClientProvider>
             </Provider>
     

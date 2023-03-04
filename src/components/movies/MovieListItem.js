@@ -1,4 +1,5 @@
 import constants from '../../constants'
+import FavoriteButton from './FavoriteButton'
 
 function MovieListItem({ movie }) {
     
@@ -14,7 +15,8 @@ function MovieListItem({ movie }) {
       <div className="col-md-8">
         <div className="card-body">
           <div className="d-flex align-items-center">
-            <h5 className="card-title">{movie?.title}</h5>
+            <FavoriteButton movie={movie}/>
+            <h5 className="card-title ms-2 mb-0">{movie?.title}</h5>
 <div className="badge rounded-pill bg-primary ms-auto">{movie?.title}</div>
           </div>
           <p className="card-text">

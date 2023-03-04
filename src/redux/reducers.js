@@ -1,5 +1,6 @@
 import actionTypes from './action-types';
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
+import { favoriteMovies } from './favorite-movies'
 
 export function weather(state = [], action) {
     switch(action.type) {
@@ -13,4 +14,5 @@ export function weather(state = [], action) {
 
 export default combineReducers({
     weather,
+    favoriteMovies,
 })

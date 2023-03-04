@@ -4,6 +4,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import HomePage from "./pages/HomePage"
 import UsersPage from "./pages/UsersPage"
 import WeatherPage from "./pages/WeatherPage"
+import BookingPage from "./pages/BookingPage"
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function AppRouter() {
             <Route index element={<HomePage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="weather" element={<WeatherPage />} />
+            <Route path="booking" element={<BookingPage />} />
             {/* <Route path="*" element={<NoMatch />} /> */}
             </Route>
         </Routes>
