@@ -40,7 +40,7 @@ function BookingPage() {
 
     function getWorkStations(column) {
         return column.map((workstation, index) => {
-            return <Workstation
+            return <Workstation 
                 key={workstation.id}
                 isLeft={index % 2 === 0}
                 workstation={workstation}
@@ -58,7 +58,7 @@ function BookingPage() {
         })
     }
 
-
+    
 
 
     return <div className="container">
@@ -69,11 +69,46 @@ function BookingPage() {
         <div className="col-md-8">
             <div className="d-flex">
                 {getColumns()}
+                {/* <div className="booking-column mx-2">
+                    <div className="d-flex flex-wrap">
+
+
+                        <div className="left place my-2">
+                            <div className="workstation d-flex align-items-center">
+                                <div className="chair"></div>
+                                <div className="desk d-flex align-items-center justify-content-center">
+                                    <div className="user-placeholder"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="right place my-2">
+                            <div className="workstation d-flex align-items-center">
+                                <div className="chair"></div>
+                                <div className="desk d-flex align-items-center justify-content-center">
+                                    <div className="user-placeholder occupied">
+                                        <div className="user-abbreviation">AB</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="left place my-2 px-2"></div>
+                        <div className="right place my-2 px-2"></div>
+                        <div className="left place my-2 px-2"></div>
+                    </div>
+                </div>
+                <div className="booking-column mx-2">
+                    <div className="d-flex flex-wrap">
+                        <div className="left place my-2 px-2"></div>
+                        <div className="right place my-2 px-2"></div>
+                        <div className="left place my-2 px-2"></div>
+                    </div>
+                </div> */}
             </div>
         </div>
     </div>
 </div>
-
+ 
 }
 
 export default BookingPage

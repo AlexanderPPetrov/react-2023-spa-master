@@ -1,4 +1,3 @@
-import DefaultLayout from "../layouts/DefaultLayout"
 import UserMenu from "../components/UserMenu"
 import UserListContainer from "../components/UserListContainer"
 function UsersPage() {

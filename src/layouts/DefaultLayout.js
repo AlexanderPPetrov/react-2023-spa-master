@@ -1,9 +1,11 @@
 import AppNavbar from "../components/AppNavbar"
-import { Outlet } from 'react-router-dom'
-
+import { Outlet, useLocation } from 'react-router-dom'
 function DefaultLayout() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+    
     return <>
-        <AppNavbar/>
+        {currentPath !== '/login' && <AppNavbar/>}
         <Outlet />
     </>
 }

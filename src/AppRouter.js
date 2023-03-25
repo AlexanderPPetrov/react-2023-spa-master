@@ -1,23 +1,23 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
-import DefaultLayout from "./layouts/DefaultLayout"
 import HomePage from "./pages/HomePage"
 import UsersPage from "./pages/UsersPage"
 import WeatherPage from "./pages/WeatherPage"
 import BookingPage from "./pages/BookingPage"
-
+import LoginPage from "./pages/LoginPage"
+import ProtectedRoute from './ProtectedRoute';
 import { BrowserRouter } from "react-router-dom";
 
 function AppRouter() {
   return (
       <BrowserRouter>
         <Routes>
-            <Route path="/" element={<DefaultLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="users" element={<UsersPage />} />
-            <Route path="weather" element={<WeatherPage />} />
-            <Route path="booking" element={<BookingPage />} />
-            {/* <Route path="*" element={<NoMatch />} /> */}
+            <Route path="/" element={<ProtectedRoute/>}>
+              <Route index element={<HomePage />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="weather" element={<WeatherPage />} />
+              <Route path="booking" element={<BookingPage />} />
             </Route>
         </Routes>
       </BrowserRouter>

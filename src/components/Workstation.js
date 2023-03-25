@@ -5,15 +5,15 @@ function Workstation({isLeft, workstation}) {
     <div className="workstation d-flex align-items-center">
         <div className="chair"></div>
         <div className="desk d-flex align-items-center justify-content-center">
-            <div className={`d-flex align-items-center justify-content-center user-placeholder ${workstation?.user ? 'occupied' : ''}`}>
-                {workstation?.user && <div className="user-abbreviation ">
+            <div className={`user-placeholder ${workstation?.user ? 'occupied' : ''}`}>
+                {workstation?.user && <div className="user-abbreviation">
                     {workstation?.user}
                 </div>}
             </div>
         </div>
     </div>
 </div>
-
+ 
 }
 
 export default Workstation
