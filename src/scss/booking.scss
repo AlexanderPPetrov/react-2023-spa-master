@@ -3,7 +3,7 @@
 $borderColor: #666666;
 
 .booking-column {
-    max-width: 80px;
+    max-width: 140px;
 }
 .place {
     flex: 0 0 50%;
@@ -20,48 +20,47 @@ $borderColor: #666666;
 }
 
 .chair {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
     border: 1px solid $borderColor;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 30px;
     position: relative;
     border-right: 0;
     &:before {
         content: " ";
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
         border: 1px solid $borderColor;
-        width: 18px;
-        height: 20px;
+        width: calc(100% + 5px);
+        height: calc(100% + 8px);
         position: absolute;
-        top: -3px;
-        right: 0px;
+        top: -4px;
+        right: -1px;
     }
 }
 
 .desk {
     border: 1px solid $borderColor;
-    width: 20px;
-    height: 36px;
+    width: 40px;
+    height: 80px;
     margin: 0 2px;
-    border-radius: 1px;
+    border-radius: 3px;
     .user-placeholder {
-        border-radius: 1px;
-        width: 16px;
-        height: 16px;
+        border-radius: 3px;
+        width: 32px;
+        height: 32px;
         background-color: rgb(171, 95, 233);
         cursor: pointer;
         &:hover {
             background-color: rgba(171, 95, 233, 0.89);
-        } 
+        }
         &.occupied {
             cursor: not-allowed;
             background-color: rgba(235, 108, 23, 0.89);
         }
         .user-abbreviation {
             color: white;
-            font-size: 10px;
             font-weight: bold;
             text-align: center;
         }
