@@ -3,15 +3,24 @@ import * as Yup from 'yup';
 import { Button } from 'react-bootstrap';
 import { useUserContext } from "../context/UserContext"
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 
 function LoginForm() {
 
     const navigate = useNavigate();
     const { setCurrentUser } = useUserContext();
+    const { t } = useTranslation();
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().email('Invalid email address').required('Email is required'),
-        password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+        email: Yup
+        .string()
+        .email(t('loginPage.emailValidation'))
+        .required(t('loginPage.emailValidation')),
+        password: Yup
+        .string()
+        .min(6, t('loginPage.passwordValidation'))
+        .required(t('loginPage.passwordValidation')),
       });
 
     return <Formik
@@ -24,28 +33,27 @@ function LoginForm() {
     }}
   >
     {({ errors, touched }) => (
-      <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Login</h5>
         <Form>
             <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              {t('loginPage.email')}
+            </label>
             <Field name="email" type="email" className={`form-control ${errors.email && touched.email ? 'is-invalid' : ''}`} />
             {errors.email && touched.email ? <div className="invalid-feedback">{errors.email}</div> : null}
             </div>
             <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              {t('loginPage.password')}
+            </label>
             <Field name="password" type="password" className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`} />
             {errors.password && touched.password ? <div className="invalid-feedback">{errors.password}</div> : null}
             </div>
             <div className="d-grid gap-2">
-              <Button className="mt-3 text-white" type="submit" variant="primary">Submit</Button>
+              <Button className="mt-3 text-white" type="submit" variant="primary">
+              {t('loginPage.login')}
+              </Button>
             </div>
         </Form>
-        </div>
-    </div>
-      
-      
     )}
   </Formik>
 }

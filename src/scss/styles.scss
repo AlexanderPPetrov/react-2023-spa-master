@@ -12,6 +12,7 @@
 );
 
 $body-bg: #eeeeee;
+$body-color: #545555;
 
 $theme-colors: map-merge($theme-colors, $custom-theme);
 $enable-shadows: true;
@@ -35,6 +36,15 @@ $input-border-radius: 2rem;
 $navbar-padding-y: 0;
 $nav-link-padding-y: 1rem;
 $navbar-nav-link-padding-x: 1rem;
+
+
+// Links
+$link-color: rgb(44, 44, 44);
+$link-decoration: none;
+$link-hover-color:  rgb(77, 77, 77);
+a {
+    font-weight: bold;
+}
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
