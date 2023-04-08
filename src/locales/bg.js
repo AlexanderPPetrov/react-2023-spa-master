@@ -2,6 +2,7 @@ const bg = {
     translation: {
       navLinks: {
         home: 'Начало',
+        movies: 'Филми',
         users: 'Потребители',
         weather: 'Време',
         booking: 'Резервация',
@@ -13,7 +14,16 @@ const bg = {
         passwordValidation: "Паролата трябва да е минимум 6 символа",
         login: 'Влез',
         signUpText: "Нямате акаунт?",
+        loginText: "Имате акаунт?",
         signUpButton: "Регистрирайте се",
+        register: 'Регистрация',
+        firstName: "Име",
+        lastName: "Фамилия",
+        requiredFieldValidation: "Това поле е задължително",
+        address: "Адрес",
+        addressValidation: "Моля въведете адрес",
+        repeatPassword: "Повтори паролата",
+        repeatPasswordValidation: "Паролата не съвпада"
       }
     },
 };

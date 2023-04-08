@@ -1,6 +1,14 @@
 import LoginForm from "../components/LoginForm"
+import RegisterForm from "../components/RegisterForm"
 import { useTranslation } from "react-i18next";
+import brandLogo from '../assets/logo.jpg';
+import { useState } from 'react';
+
+
+
 function LoginPage() {
+
+    const [isLoginForm, setIsLoginForm] = useState(true);
 
     const { t } = useTranslation()
 
@@ -9,16 +17,18 @@ function LoginPage() {
         <div className="col-md-4 offset-md-4">
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title">
-                    //TODO
+                    <h5 className="card-title d-flex justify-content-center">
+                        <img src={brandLogo} style={{height: '60px'}} alt="ST 2023" />
                     </h5>
-                    <LoginForm/>
+                    {isLoginForm && <LoginForm/> }
+                    {!isLoginForm && <RegisterForm/>}
                     <div className="d-flex align-items-center justify-content-center mt-4">
                         <span className="mx-1">
-                            {t('loginPage.signUpText')}
+                            {t( isLoginForm ? 'loginPage.signUpText' : 'loginPage.loginText')}
                         </span>
-                        <a href="#" className="mx-1">
-                            {t('loginPage.signUpButton')}
+                        <a onClick={() => setIsLoginForm(!isLoginForm)}
+                             href="#" className="mx-1 fw-bold">
+                            {t(isLoginForm ? 'loginPage.signUpButton' : 'loginPage.login')}
                         </a>
                     </div>
                 </div>

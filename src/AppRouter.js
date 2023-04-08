@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage"
+import MoviesPage from "./pages/MoviesPage"
 import UsersPage from "./pages/UsersPage"
 import WeatherPage from "./pages/WeatherPage"
 import BookingPage from "./pages/BookingPage"
@@ -14,6 +15,7 @@ function AppRouter() {
         <Routes>
             <Route path="/" element={<ProtectedRoute/>}>
               <Route index element={<HomePage />} />
+              <Route path="movies" element={<MoviesPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="users" element={<UsersPage />} />
               <Route path="weather" element={<WeatherPage />} />

@@ -14,6 +14,10 @@ function AppNavbar() {
       title: t('navLinks.home'),
     },
     {
+      to: '/movies',
+      title: t('navLinks.movies'),
+    },
+    {
       to: '/users',
       title: t('navLinks.users'),
     },

@@ -2,6 +2,7 @@ const en = {
     translation: {
       navLinks: {
         home: 'Home',
+        movies: 'Movies',
         users: 'Users',
         weather: 'Weather',
         booking: 'Booking',
@@ -13,7 +14,16 @@ const en = {
         passwordValidation: "Your password should be atleast 6 characters",
         login: 'Login',
         signUpText: "Don't have an account?",
+        loginText: "Have an account?",
         signUpButton: "Sign up for free",
+        register: 'Register',
+        firstName: "First name",
+        lastName: "Last name",
+        requiredFieldValidation: "The field is required",
+        address: "Address",
+        addressValidation: "Please enter your address",
+        repeatPassword: "Repeat password",
+        repeatPasswordValidation: "Password mismatch"
       }
     },
 };

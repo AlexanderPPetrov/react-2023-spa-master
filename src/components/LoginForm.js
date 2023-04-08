@@ -16,11 +16,11 @@ function LoginForm() {
         email: Yup
         .string()
         .email(t('loginPage.emailValidation'))
-        .required(t('loginPage.emailValidation')),
+        .required(t('loginPage.requiredFieldValidation')),
         password: Yup
         .string()
         .min(6, t('loginPage.passwordValidation'))
-        .required(t('loginPage.passwordValidation')),
+        .required(t('loginPage.requiredFieldValidation')),
       });
 
     return <Formik
