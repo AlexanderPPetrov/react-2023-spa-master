@@ -1,4 +1,6 @@
 import AppNavbar from "../components/AppNavbar"
+import AppFooter from "../components/AppFooter"
+
 import { Outlet, useLocation } from 'react-router-dom'
 function DefaultLayout() {
     const location = useLocation();
@@ -7,6 +9,7 @@ function DefaultLayout() {
     return <>
         {currentPath !== '/login' && <AppNavbar/>}
         <Outlet />
+        {currentPath !== '/login' && <AppFooter/>}
     </>
 }
 

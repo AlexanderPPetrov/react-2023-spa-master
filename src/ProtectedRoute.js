@@ -1,5 +1,6 @@
 import React from 'react';
 import AppNavbar from "./components/AppNavbar"
+import AppFooter from "./components/AppFooter"
 
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useUserContext } from './context/UserContext';
@@ -18,8 +19,11 @@ const ProtectedRoute = () => {
     return <>
      {/* {!isLoginRoute() && <AppNavbar/>} */}
      {/* <Outlet /> */}
-        {!isLoginRoute() && isAuthenticated() && <AppNavbar/>}
-        {isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />}
+        {!isLoginRoute() && <AppNavbar/>}
+        <main className="flex-shrink-0">
+            {isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />}
+        </main>
+        {!isLoginRoute() && <AppFooter/>}
     </>
 }
 

@@ -11,6 +11,11 @@
     "secondary": teal
 );
 
+html, body, #root {
+    height: 100%;
+}
+
+
 $body-bg: #eeeeee;
 $body-color: #545555;
 
