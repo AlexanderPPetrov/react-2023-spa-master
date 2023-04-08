@@ -1,0 +1,12 @@
+.form-group {
+    
+    label {
+        color: $gray-600;
+        font-size: 14px;
+        padding-left: 3px;
+    }
+
+    + .form-group {
+        margin-top: 0.25rem;
+    }
+}

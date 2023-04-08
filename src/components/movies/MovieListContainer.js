@@ -6,8 +6,8 @@ function MovieListContainer() {
     const { movies } = useMovieContext()
 
     return <>
-        <div className="d-flex align-items-center justify-content-between mb-3">
-            <h5>Results</h5>
+        <div className="page-title d-flex align-items-center justify-content-between mt-3 mt-md-0 mb-3">
+            <h5 className="mb-0">Results</h5>
             <ViewSwitch/>
         </div>
         <MovieList movies={movies}/>

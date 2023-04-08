@@ -1,0 +1,29 @@
+.navbar {
+    border-bottom: 1px solid var(--bs-gray-400);
+    .navbar-brand {
+      padding-left: 0.5rem;
+      img {
+        height: 48px;
+      }
+    }
+    .navbar-nav {
+        .nav-link {
+          &:hover, &:focus {
+            border-bottom: 3px solid var(--bs-primary);
+          }
+        }
+        .show > .nav-link,
+        .nav-link.active {
+            border-bottom: 3px solid var(--bs-primary);
+        }
+        .dropdown {
+          .nav-link {
+            border-bottom: 0 !important;
+          }
+        }
+        .dropdown-toggle {
+          display: flex;
+          align-items: center;
+        }
+    }
+}

@@ -38,7 +38,9 @@ function LoginForm() {
             <Field name="password" type="password" className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`} />
             {errors.password && touched.password ? <div className="invalid-feedback">{errors.password}</div> : null}
             </div>
-            <Button className="mt-3" type="submit" variant="primary">Submit</Button>
+            <div className="d-grid gap-2">
+              <Button className="mt-3 text-white" type="submit" variant="primary">Submit</Button>
+            </div>
         </Form>
         </div>
     </div>

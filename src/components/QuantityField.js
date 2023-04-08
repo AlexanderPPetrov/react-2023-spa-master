@@ -19,7 +19,7 @@ function QuantityField(
      }, []);
 
 
-    return <div className="input-group ms-auto" style={{width: "120px"}}>
+    return <div className="input-group ms-auto" style={{width: "180px"}}>
             <button className="btn btn-outline-secondary"
                     type="button" 
                     id="button-addon1"

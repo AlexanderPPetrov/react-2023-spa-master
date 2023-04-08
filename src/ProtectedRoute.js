@@ -16,6 +16,8 @@ const ProtectedRoute = () => {
         return currentPath === '/login'
     }
     return <>
+     {/* {!isLoginRoute() && <AppNavbar/>} */}
+     {/* <Outlet /> */}
         {!isLoginRoute() && isAuthenticated() && <AppNavbar/>}
         {isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />}
     </>

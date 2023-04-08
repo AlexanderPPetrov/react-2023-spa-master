@@ -1,11 +1,46 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 /* The following block can be included in a custom.scss */
 
 /* make the customizations */
-// $theme-colors: (
-//     "info": tomato,
-//     "danger": teal
-// );
+// Variables
+ $custom-theme: (
+    "primary": #4fd99f,
+    "secondary": teal
+);
+
+$body-bg: #eeeeee;
+
+$theme-colors: map-merge($theme-colors, $custom-theme);
+$enable-shadows: true;
+
+// Card component
+$card-box-shadow: 0px 9px 11px -8px rgba(0,0,0,0.25);
+$card-border-radius: 12px;
+$card-spacer-y: 2rem;
+$card-spacer-x: 1.5rem;
+$card-title-spacer-y: 1.5rem;
+
+// Buttons
+$btn-padding-x: 1.5rem;
+$btn-border-radius: 2rem;
+$btn-border-radius-sm: 2rem;
+
+// Form control
+$input-border-radius: 2rem;
+
+//Navbar
+$navbar-padding-y: 0;
+$nav-link-padding-y: 1rem;
+$navbar-nav-link-padding-x: 1rem;
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
-@import "./booking.scss";
+@import "./components/booking";
+@import "./components/form-group";
+@import "./components/button-group";
+@import "./components/navbar";
+@import "./components/flag-icons";
+@import "./components/page";
