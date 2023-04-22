@@ -28,7 +28,13 @@ function LoginForm() {
         validationSchema={validationSchema}
         onSubmit={ (values) => {
         // handle form submission
-        setCurrentUser({email: values.email})
+        setCurrentUser(
+          {
+            email: values.email, 
+            roles: ['ADMIN'],
+            id: '123123123',
+            userName: "Albundy",
+          })
         navigate('/');
     }}
   >

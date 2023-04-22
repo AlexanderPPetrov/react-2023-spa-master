@@ -16,12 +16,24 @@ const ProtectedRoute = () => {
     const isLoginRoute = () => {
         return currentPath === '/login'
     }
+
+    const isAdminRoute = () => {
+        return currentPath === '/admin'
+    }
+
+    const getRoute = () => {
+        if(isAdminRoute() && !currentUser?.roles?.includes('ADMIN')) {
+            return <Navigate to="/" />
+        }
+        return isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />
+    }
+
     return <>
      {/* {!isLoginRoute() && <AppNavbar/>} */}
      {/* <Outlet /> */}
         {!isLoginRoute() && <AppNavbar/>}
         <main className="flex-shrink-0">
-            {isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />}
+            { getRoute()}
         </main>
         {!isLoginRoute() && <AppFooter/>}
     </>

@@ -3,15 +3,22 @@ import { Link, useLocation } from "react-router-dom"
 import brandLogo from '../assets/logo.jpg';
 import LanguageSwitch from "./LanguageSwitch";
 import { useTranslation } from 'react-i18next';
+import { useUserContext } from '../context/UserContext';
 
 function AppNavbar() {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { currentUser } = useUserContext();
+
   const { t } = useTranslation();
   const navLinks = [
     {
       to: '/',
       title: t('navLinks.home'),
+    },
+    {
+      to: '/admin',
+      title: t('navLinks.admin'),
     },
     {
       to: '/movies',
@@ -32,12 +39,20 @@ function AppNavbar() {
 
   ]
 
+
   const isActive = (to) => {
     return currentPath === to
   }
 
+  const getUserNavLinks = () => {
+      if(!currentUser?.roles?.includes('ADMIN')) {
+        return navLinks.filter(({ to }) => to !== '/admin')
+      }
+      return navLinks
+  }
+
   const getNavLinks = () => {
-    return navLinks.map((navLink, index) => {
+    return getUserNavLinks().map((navLink, index) => {
       return <Nav.Link key={index}
                        as={Link}
                        className={isActive(navLink.to) ? 'active' : ''}
