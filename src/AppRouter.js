@@ -14,13 +14,13 @@ function AppRouter() {
       <BrowserRouter>
         <Routes>
             <Route path="/" element={<ProtectedRoute/>}>
-              <Route index element={<HomePage />} />
+              <Route index element={<BookingPage />} />
               <Route path="movies" element={<MoviesPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="users" element={<UsersPage />} />
               <Route path="admin" element={<div />} />
               <Route path="weather" element={<WeatherPage />} />
-              <Route path="booking" element={<BookingPage />} />
+              <Route path="booking" element={<HomePage />} />
             </Route>
         </Routes>
       </BrowserRouter>

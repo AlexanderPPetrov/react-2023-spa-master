@@ -29,13 +29,13 @@ const ProtectedRoute = () => {
     }
 
     return <>
-     {/* {!isLoginRoute() && <AppNavbar/>} */}
-     {/* <Outlet /> */}
-        {!isLoginRoute() && <AppNavbar/>}
+     {!isLoginRoute() && <AppNavbar/>} 
+     <Outlet />
+        {/* {!isLoginRoute() && <AppNavbar/>}
         <main className="flex-shrink-0">
             { getRoute()}
         </main>
-        {!isLoginRoute() && <AppFooter/>}
+        {!isLoginRoute() && <AppFooter/>} */}
     </>
 }
 
