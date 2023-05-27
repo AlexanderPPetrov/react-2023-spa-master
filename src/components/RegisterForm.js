@@ -5,10 +5,18 @@ import { useUserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
+import { useMutation } from 'react-query'
+import { client } from '../network/client'
+import { createUserMutation } from '../graphql/user'
+
 function RegisterForm() {
   const navigate = useNavigate()
   const { setCurrentUser } = useUserContext()
   const { t } = useTranslation()
+
+  const { mutate: createUser } = useMutation(variables => {
+    return client.request(createUserMutation, variables)
+  })
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required(t('loginPage.requiredFieldValidation')),
@@ -27,6 +35,10 @@ function RegisterForm() {
       .required(t('loginPage.requiredFieldValidation')),
   })
 
+  const onSubmit = formValues => {
+    const { repeatPassword, ...user } = formValues
+    createUser({ user })
+  }
   return (
     <Formik
       initialValues={{
@@ -40,6 +52,7 @@ function RegisterForm() {
       validationSchema={validationSchema}
       onSubmit={values => {
         // handle form submission
+        onSubmit(values)
         setCurrentUser({ email: values.email })
         navigate('/')
       }}

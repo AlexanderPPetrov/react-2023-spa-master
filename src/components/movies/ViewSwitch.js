@@ -26,6 +26,7 @@ function ViewSwitch() {
         id="gridView"
         autoComplete="off"
       />
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <label className="btn btn-outline-primary" htmlFor="gridView" checked={!listView}>
         <BsGrid size="1.5rem" />
       </label>

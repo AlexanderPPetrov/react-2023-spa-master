@@ -4,10 +4,20 @@ import { useTranslation } from 'react-i18next'
 import brandLogo from '../assets/logo.jpg'
 import { useState } from 'react'
 
+import { useQuery } from 'react-query'
+import { client } from '../network/client'
+import { usersQuery } from '../graphql/user'
+
 function LoginPage() {
   const [isLoginForm, setIsLoginForm] = useState(true)
-
   const { t } = useTranslation()
+
+  const { data } = useQuery('users', () => {
+    return client.request(usersQuery, {
+      page: 1,
+      limit: 10,
+    })
+  })
 
   return (
     <div className="container">
