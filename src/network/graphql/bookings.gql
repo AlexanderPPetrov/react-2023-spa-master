@@ -1,0 +1,5 @@
+query Bookings($page: Int!, $limit: Int) {
+    bookings(page: $page, limit: $limit) {
+        page
+    }
+}

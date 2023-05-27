@@ -1,19 +1,20 @@
-import MovieFilter from "../components/movies/MovieFilter"
-import MovieListContainer from "../components/movies/MovieListContainer"
-import FavoriteMoviesToast from "../components/movies/FavoriteMoviesToast"
+import MovieFilter from '../components/movies/MovieFilter'
+import MovieListContainer from '../components/movies/MovieListContainer'
+import FavoriteMoviesToast from '../components/movies/FavoriteMoviesToast'
 function MoviesPage() {
-
-    return <div className="container">
-    <div className="row">
+  return (
+    <div className="container">
+      <div className="row">
         <div className="col-md-4">
-            <MovieFilter/>
+          <MovieFilter />
         </div>
         <div className="col-md-8">
-            <MovieListContainer/>
-            <FavoriteMoviesToast/>
+          <MovieListContainer />
+          <FavoriteMoviesToast />
         </div>
+      </div>
     </div>
-</div>
+  )
 }
 
 export default MoviesPage

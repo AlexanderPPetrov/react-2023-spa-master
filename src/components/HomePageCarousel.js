@@ -1,4 +1,4 @@
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from 'react-bootstrap/Carousel'
 // import carousel01 from '../assets/carousel_01.jpg';
 // import carousel02 from '../assets/carousel_02.jpg';
 
@@ -29,7 +29,7 @@ function HomePageCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  );
+  )
 }
 
-export default HomePageCarousel;
+export default HomePageCarousel

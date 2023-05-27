@@ -1,17 +1,18 @@
-import UserMenu from "../components/UserMenu"
-import UserListContainer from "../components/UserListContainer"
+import UserMenu from '../components/UserMenu'
+import UserListContainer from '../components/UserListContainer'
 function UsersPage() {
-    return <div className="container">
-    <div className="row">
+  return (
+    <div className="container">
+      <div className="row">
         <div className="col-md-4">
-            <UserMenu/>
+          <UserMenu />
         </div>
         <div className="col-md-8">
-            <UserListContainer/>
+          <UserListContainer />
         </div>
+      </div>
     </div>
-</div>
- 
+  )
 }
 
 export default UsersPage
