@@ -4,11 +4,30 @@ import { Button } from 'react-bootstrap'
 import { useUserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { loginMutation } from '../graphql/user'
+import { client } from '../network/client'
+import { useMutation } from 'react-query'
+import { saveUserToken } from '../utils/token'
 
 function LoginForm() {
   const navigate = useNavigate()
-  const { setCurrentUser } = useUserContext()
   const { t } = useTranslation()
+
+  const { mutate: loginUser, data } = useMutation(
+    variables => {
+      return client.request(loginMutation, variables)
+    },
+    {
+      onSuccess: response => {
+        if (response?.login) {
+          saveUserToken(response.login)
+          window.location.href = '/'
+        }
+      },
+    },
+  )
+
+  console.log(data)
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -19,18 +38,22 @@ function LoginForm() {
       .required(t('loginPage.requiredFieldValidation')),
   })
 
+  const onSubmit = formValues => {
+    loginUser(formValues)
+  }
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={values => {
         // handle form submission
-        setCurrentUser({
-          email: values.email,
-          roles: ['ADMIN'],
-          id: '123123123',
-          userName: 'Albundy',
-        })
+        onSubmit(values)
+        // setCurrentUser({
+        //   email: values.email,
+        //   roles: ['ADMIN'],
+        //   id: '123123123',
+        //   userName: 'Albundy',
+        // })
         navigate('/')
       }}
     >
