@@ -1,0 +1,94 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Booking {
+    _id: ObjectId!
+    bookingDate: DateTime!
+    createdAt: DateTime!
+    description: String!
+    place: String!
+    updatedAt: DateTime!
+    user: User!
+}
+
+type Mutation {
+    createBooking(booking: BookingInput!): Booking!
+    createUser(user: CreateUserInput!): String!
+    deleteBooking(_id: String!): Booking!
+    deleteUser(_id: String!): User!
+    login(email: String!, password: String!): String!
+    updateBooking(_id: String!, booking: BookingInput!): Booking!
+    updateUser(_id: String!, user: BaseUserInput!): User!
+}
+
+type PaginatedBookingResponse {
+    items: [Booking!]!
+    page: Float!
+    totalItems: Float!
+    totalPages: Float!
+}
+
+type PaginatedUserResponse {
+    items: [User!]!
+    page: Float!
+    totalItems: Float!
+    totalPages: Float!
+}
+
+type Query {
+    booking(_id: String!): Booking!
+    bookings(limit: Int = 20, page: Int! = 1): PaginatedBookingResponse!
+    currentUser: User!
+    user(_id: String!): User!
+    users(limit: Int = 20, page: Int! = 1): PaginatedUserResponse!
+}
+
+type User {
+    _id: ObjectId!
+    address: String
+    createdAt: DateTime!
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+    roles: [UserRole!]!
+    updatedAt: DateTime!
+}
+
+enum UserRole {
+    ADMIN
+    SUPER_ADMIN
+    USER
+}
+
+"The javascript `Date` as string. Type represents date and time as the ISO Date string."
+scalar DateTime
+
+"Mongo object id scalar type"
+scalar ObjectId
+
+input BaseUserInput {
+    address: String
+    firstName: String!
+    lastName: String!
+    password: String!
+}
+
+input BookingInput {
+    bookingDate: DateTime!
+    description: String!
+    place: String!
+    user: ObjectId!
+}
+
+input CreateUserInput {
+    address: String
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+}

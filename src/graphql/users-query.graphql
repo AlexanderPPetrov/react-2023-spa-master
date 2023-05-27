@@ -1,0 +1,10 @@
+query Users($limit: Int, $page: Int!) {
+    users(limit: $limit, page: $page) {
+        page
+        items {
+            _id
+        }
+        totalPages
+        totalItems
+    }
+}
