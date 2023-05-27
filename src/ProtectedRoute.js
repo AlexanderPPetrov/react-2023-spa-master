@@ -1,42 +1,42 @@
-import React from 'react';
-import AppNavbar from "./components/AppNavbar"
-import AppFooter from "./components/AppFooter"
+import React from 'react'
+import AppNavbar from './components/AppNavbar'
+import AppFooter from './components/AppFooter'
 
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useUserContext } from './context/UserContext';
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { useUserContext } from './context/UserContext'
 
 const ProtectedRoute = () => {
-    const location = useLocation();
-    const currentPath = location.pathname;
-    const { currentUser } = useUserContext();
+  const location = useLocation()
+  const currentPath = location.pathname
+  const { currentUser } = useUserContext()
 
-    const isAuthenticated = () => {
-        return Object.keys(currentUser).length
-    }
-    const isLoginRoute = () => {
-        return currentPath === '/login'
-    }
+  const isAuthenticated = () => {
+    return Object.keys(currentUser).length
+  }
+  const isLoginRoute = () => {
+    return currentPath === '/login'
+  }
 
-    const isAdminRoute = () => {
-        return currentPath === '/admin'
-    }
+  const isAdminRoute = () => {
+    return currentPath === '/admin'
+  }
 
-    const getRoute = () => {
-        if(isAdminRoute() && !currentUser?.roles?.includes('ADMIN')) {
-            return <Navigate to="/" />
-        }
-        return isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />
+  const getRoute = () => {
+    if (isAdminRoute() && !currentUser?.roles?.includes('ADMIN')) {
+      return <Navigate to="/" />
     }
+    return isAuthenticated() || isLoginRoute() ? <Outlet /> : <Navigate to="/login" />
+  }
 
-    return <>
-     {/* {!isLoginRoute() && <AppNavbar/>} */}
-     {/* <Outlet /> */}
-        {!isLoginRoute() && <AppNavbar/>}
-        <main className="flex-shrink-0">
-            { getRoute()}
-        </main>
-        {!isLoginRoute() && <AppFooter/>}
+  return (
+    <>
+      {/* {!isLoginRoute() && <AppNavbar/>} */}
+      {/* <Outlet /> */}
+      {!isLoginRoute() && <AppNavbar />}
+      <main className="flex-shrink-0">{getRoute()}</main>
+      {!isLoginRoute() && <AppFooter />}
     </>
+  )
 }
 
 export default ProtectedRoute

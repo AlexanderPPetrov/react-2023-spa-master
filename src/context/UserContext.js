@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 const defaultUserContext = {
-    currentUser: {},
-    setCurrentUser: () => undefined
+  currentUser: {},
+  setCurrentUser: () => undefined,
 }
 
 export const UserContext = React.createContext(defaultUserContext)
