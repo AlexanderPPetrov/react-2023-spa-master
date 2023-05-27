@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import AppNavbar from './components/AppNavbar'
 import AppFooter from './components/AppFooter'
 
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useUserContext } from './context/UserContext'
 import { currentUserQuery } from './graphql/user'
 import { client } from './network/client'
@@ -10,35 +10,24 @@ import { useQuery } from 'react-query'
 
 const ProtectedRoute = () => {
   const location = useLocation()
-  const navigate = useNavigate()
-
+  const [userDefined, setUserDefined] = useState(false)
+  const { currentUser, setCurrentUser } = useUserContext()
   const currentPath = location.pathname
-  const { data, isLoading, refetch } = useQuery(
+
+  const { isLoading } = useQuery(
     'currentUser',
     () => {
       return client.request(currentUserQuery)
     },
-    { retry: false },
+    {
+      retry: false,
+      onSettled: data => {
+        setCurrentUser(data?.currentUser || {})
+        setUserDefined(true)
+      },
+    },
   )
 
-  const [userDefined, setUserDefined] = useState(false)
-  const { currentUser, setCurrentUser } = useUserContext()
-
-  useEffect(() => {
-    if (!data && isLoading) {
-      return
-    }
-    if (data?.currentUser) {
-      setCurrentUser(data?.currentUser)
-    }
-    setUserDefined(true)
-  }, [data, isLoading, setCurrentUser])
-
-  // useEffect(() => {
-  //   if (!isLoginRoute() && !isAuthenticated()) {
-  //     navigate('/login')
-  //   }
-  // }
   const isAuthenticated = () => {
     return Object.keys(currentUser).length
   }
@@ -65,7 +54,6 @@ const ProtectedRoute = () => {
     return null
   }
 
-  console.log(isLoading, currentUser, userDefined)
   return (
     <>
       {/* {!isLoginRoute() && <AppNavbar/>} */}

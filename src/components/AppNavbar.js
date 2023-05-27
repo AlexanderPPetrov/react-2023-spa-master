@@ -4,6 +4,7 @@ import brandLogo from '../assets/logo.jpg'
 import LanguageSwitch from './LanguageSwitch'
 import { useTranslation } from 'react-i18next'
 import { useUserContext } from '../context/UserContext'
+import UserMenu from './UserMenu'
 
 function AppNavbar() {
   const location = useLocation()
@@ -75,6 +76,7 @@ function AppNavbar() {
           <Nav className="ms-auto">
             {getNavLinks()}
             <LanguageSwitch />
+            <UserMenu />
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -9,7 +9,13 @@ import i18n from 'i18next'
 import configureStore from '../redux/configureStore'
 const store = configureStore()
 
-const queryClient = new QueryClient()
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+})
 function Providers({ children }) {
   return (
     <Provider store={store}>

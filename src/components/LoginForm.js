@@ -1,13 +1,13 @@
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { Button } from 'react-bootstrap'
-import { useUserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { loginMutation } from '../graphql/user'
 import { client } from '../network/client'
 import { useMutation } from 'react-query'
 import { saveUserToken } from '../utils/token'
+import { queryClient } from '../providers/Providers'
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -21,13 +21,13 @@ function LoginForm() {
       onSuccess: response => {
         if (response?.login) {
           saveUserToken(response.login)
-          window.location.href = '/'
+          client.setHeader('Authorization', `Bearer ${response.login}`)
+          queryClient.refetchQueries('currentUser')
+          navigate('/')
         }
       },
     },
   )
-
-  console.log(data)
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -48,13 +48,6 @@ function LoginForm() {
       onSubmit={values => {
         // handle form submission
         onSubmit(values)
-        // setCurrentUser({
-        //   email: values.email,
-        //   roles: ['ADMIN'],
-        //   id: '123123123',
-        //   userName: 'Albundy',
-        // })
-        navigate('/')
       }}
     >
       {({ errors, touched }) => (
