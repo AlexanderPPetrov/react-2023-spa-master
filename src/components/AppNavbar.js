@@ -1,16 +1,16 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
-import { Link, useLocation } from "react-router-dom"
-import brandLogo from '../assets/logo.jpg';
-import LanguageSwitch from "./LanguageSwitch";
-import { useTranslation } from 'react-i18next';
-import { useUserContext } from '../context/UserContext';
+import { Link, useLocation } from 'react-router-dom'
+import brandLogo from '../assets/logo.jpg'
+import LanguageSwitch from './LanguageSwitch'
+import { useTranslation } from 'react-i18next'
+import { useUserContext } from '../context/UserContext'
 
 function AppNavbar() {
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const { currentUser } = useUserContext();
+  const location = useLocation()
+  const currentPath = location.pathname
+  const { currentUser } = useUserContext()
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const navLinks = [
     {
       to: '/',
@@ -35,30 +35,32 @@ function AppNavbar() {
     {
       to: '/booking',
       title: t('navLinks.booking'),
-    }
-
+    },
   ]
 
-
-  const isActive = (to) => {
+  const isActive = to => {
     return currentPath === to
   }
 
   const getUserNavLinks = () => {
-      if(!currentUser?.roles?.includes('ADMIN')) {
-        return navLinks.filter(({ to }) => to !== '/admin')
-      }
-      return navLinks
+    if (!currentUser?.roles?.includes('ADMIN')) {
+      return navLinks.filter(({ to }) => to !== '/admin')
+    }
+    return navLinks
   }
 
   const getNavLinks = () => {
     return getUserNavLinks().map((navLink, index) => {
-      return <Nav.Link key={index}
-                       as={Link}
-                       className={isActive(navLink.to) ? 'active' : ''}
-                       to={navLink.to}>
-                         {navLink.title}
-                       </Nav.Link>
+      return (
+        <Nav.Link
+          key={index}
+          as={Link}
+          className={isActive(navLink.to) ? 'active' : ''}
+          to={navLink.to}
+        >
+          {navLink.title}
+        </Nav.Link>
+      )
     })
   }
 
@@ -71,13 +73,13 @@ function AppNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-           {getNavLinks()}
-           <LanguageSwitch/>
+            {getNavLinks()}
+            <LanguageSwitch />
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  )
 }
 
-export default AppNavbar;
+export default AppNavbar
